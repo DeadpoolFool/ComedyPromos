@@ -23,3 +23,9 @@ Post the story PNG and add a link sticker with the ticket URL. Tag @laughingbudd
 Hey! I got into the Laughing Buddha comedy festival and the first round is judged only by audience response, so I need actual humans in the room. Saturday Oct 17, 7PM, The Buddha Room (410 8th Ave, 2nd fl). If you can buy a ticket ahead of time it helps a lot, since advance sales decide the lineup order: https://www.tickettailor.com/events/laughingbuddhacomedy/2446639
 
 Come early, laugh loud, I'll owe you a drink.
+
+## Official-flyer versions (headshot inserted)
+
+`out/lbc_flyer_feat_1080x1350.png` (feed) and `out/lbc_flyer_feat_1080x1920.png` (story) are LBC's own flyer
+with Artem's headshot and a "Featuring Artem" line added. Rebuild with `python3 flyer_insert.py`.
+The person mask (`headshot_alpha.npy`) came from MediaPipe's selfie_multiclass_256x256 model.
