@@ -27,5 +27,5 @@ Come early, laugh loud, I'll owe you a drink.
 ## Official-flyer versions (headshot inserted)
 
 `out/lbc_flyer_feat_1080x1350.png` (feed) and `out/lbc_flyer_feat_1080x1920.png` (story) are LBC's own flyer
-with Artem's headshot and a "Featuring Artem" line added. Rebuild with `python3 flyer_insert.py`.
+with Artem's headshot, "ARTEM MASHKOV" and "WINNER DECIDED BY AUDIENCE" added. Rebuild with `python3 flyer_insert.py`.
 The person mask (`headshot_alpha.npy`) came from MediaPipe's selfie_multiclass_256x256 model.

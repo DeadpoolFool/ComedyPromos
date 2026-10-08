@@ -12,6 +12,7 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
 OUT.mkdir(exist_ok=True)
 FLYER = Image.open(HERE / "lbc_flyer.png").convert("RGB")  # 1080x1350
+NAME, TAGLINE = "ARTEM MASHKOV", "WINNER DECIDED BY AUDIENCE"
 ANTON = str(Path.home() / ".fonts/Anton-Regular.ttf")
 
 # Flyer regions (px, from the 1080x1350 original).
@@ -164,7 +165,8 @@ def feed():
     paste_prelim(c, prelim, sx + round(500 * s), sy - 50)
     person(c, 600, 1080 - 515, 412, fade=90)
     d = ImageDraw.Draw(c)
-    outlined(d, (sx + 8, 900), "FEATURING ARTEM", 66)
+    outlined(d, (sx + 8, 870), NAME, 66)
+    outlined(d, (sx + 10, 950), TAGLINE, 32)
     return c.convert("RGB")
 
 
@@ -175,12 +177,13 @@ def story():
     c.paste(wood(mid, blend_at=mid - 300), (0, TOP_END))
     c.paste(CLEAN.crop((0, BOTTOM_START, 1080, 1350)), (0, TOP_END + mid))
     c = c.convert("RGBA")
-    s, sx, sy = 0.86, 70, 1190
+    s, sx, sy = 0.82, 90, 1210
     prelim = place_sign(c, s, sx, sy, string_tops=("logo", 248))
-    person(c, 760, 1080 // 2 - 330, 300, fade=120)
+    person(c, 730, 1080 // 2 - 317, 290, fade=120)
     d = ImageDraw.Draw(c)
-    outlined(d, (540, 1000), "FEATURING ARTEM", 92, anchor="ma")
-    paste_prelim(c, prelim, 540, sy - 62)
+    outlined(d, (540, 960), NAME, 96, anchor="ma")
+    outlined(d, (540, 1082), TAGLINE, 44, anchor="ma")
+    paste_prelim(c, prelim, 540, sy - 60)
     return c.convert("RGB")
 
 
