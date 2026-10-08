@@ -41,6 +41,25 @@ def _clean():
 CLEAN = _clean()
 
 
+def _erase_hashtag(im):
+    """Paint #LBCFF out with mirrored planks from just below it (same columns, so no seam)."""
+    band = im.crop((600, 252, 1000, 300))
+    patch = Image.new("RGB", (400, 120))
+    for i, y in enumerate(range(0, 120, band.height)):
+        patch.paste(band if i % 2 else band.transpose(Image.FLIP_TOP_BOTTOM), (0, 120 - y - band.height))
+    im.paste(patch, (600, 135))
+
+
+_erase_hashtag(CLEAN)
+HEADER_BOTTOM = 300  # festival name ends here; right-hand string hangs from it
+
+
+def festival_name(canvas):
+    d = ImageDraw.Draw(canvas)
+    outlined(d, (735, 92), "LAUGHING BUDDHA", 84, anchor="ma")
+    outlined(d, (735, 192), "COMEDY FESTIVAL", 84, anchor="ma")
+
+
 def _mirror_tile(band, h, from_bottom=False):
     """Stack band / flipped band so every joint is continuous (planks run vertically)."""
     tiles = [band, band.transpose(Image.FLIP_TOP_BOTTOM)]
@@ -161,11 +180,12 @@ def feed():
     c.paste(wood(BOTTOM_START - TOP_END), (0, TOP_END))
     c = c.convert("RGBA")
     s, sx, sy = 0.55, 46, 590
-    prelim = place_sign(c, s, sx, sy, string_tops=("logo", 0))
+    prelim = place_sign(c, s, sx, sy, string_tops=("logo", HEADER_BOTTOM))
     person(c, 600, 1080 - 515, 412, fade=90)
     d = ImageDraw.Draw(c)
     outlined(d, (sx + 8, 870), NAME, 66)
     outlined(d, (sx + 10, 950), TAGLINE, 32)
+    festival_name(c)
     return c.convert("RGB")
 
 
@@ -177,11 +197,12 @@ def story():
     c.paste(CLEAN.crop((0, BOTTOM_START, 1080, 1350)), (0, TOP_END + mid))
     c = c.convert("RGBA")
     s, sx, sy = 0.82, 90, 1180
-    prelim = place_sign(c, s, sx, sy, string_tops=("logo", 248))
+    prelim = place_sign(c, s, sx, sy, string_tops=("logo", HEADER_BOTTOM))
     person(c, 730, 1080 // 2 - 317, 290, fade=120)
     d = ImageDraw.Draw(c)
     outlined(d, (540, 960), NAME, 96, anchor="ma")
     outlined(d, (540, 1082), TAGLINE, 44, anchor="ma")
+    festival_name(c)
     return c.convert("RGB")
 
 
