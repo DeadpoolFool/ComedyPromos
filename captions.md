@@ -18,7 +18,7 @@ Tickets: link in bio 🎟️
 
 Back in the LBC Fall Fest 🍂 Last festival I made it to the semifinals and finished 36th out of 400 comics. Let's see how far I can go this time.
 
-Prelims are Saturday, Oct 17 at 7PM at The Buddha Room (410 8th Ave, 2nd floor). The audience picks who moves on, so having you in the room matters. Let me know if you're free that night. Really appreciate the support 🙏
+Saturday, Oct 17 at 7PM at The Buddha Room (410 8th Ave, 2nd floor). The audience picks who moves on, so having you in the room matters. Let me know if you're free that night. Really appreciate the support 🙏
 
 Like or DM me if you can come. Tickets: link in bio 🎟️
 

@@ -160,9 +160,8 @@ def feed():
     c = CLEAN.copy()
     c.paste(wood(BOTTOM_START - TOP_END), (0, TOP_END))
     c = c.convert("RGBA")
-    s, sx, sy = 0.55, 46, 620
+    s, sx, sy = 0.55, 46, 590
     prelim = place_sign(c, s, sx, sy, string_tops=("logo", 0))
-    paste_prelim(c, prelim, sx + round(500 * s), sy - 50)
     person(c, 600, 1080 - 515, 412, fade=90)
     d = ImageDraw.Draw(c)
     outlined(d, (sx + 8, 870), NAME, 66)
@@ -177,13 +176,12 @@ def story():
     c.paste(wood(mid, blend_at=mid - 300), (0, TOP_END))
     c.paste(CLEAN.crop((0, BOTTOM_START, 1080, 1350)), (0, TOP_END + mid))
     c = c.convert("RGBA")
-    s, sx, sy = 0.82, 90, 1210
+    s, sx, sy = 0.82, 90, 1180
     prelim = place_sign(c, s, sx, sy, string_tops=("logo", 248))
     person(c, 730, 1080 // 2 - 317, 290, fade=120)
     d = ImageDraw.Draw(c)
     outlined(d, (540, 960), NAME, 96, anchor="ma")
     outlined(d, (540, 1082), TAGLINE, 44, anchor="ma")
-    paste_prelim(c, prelim, 540, sy - 60)
     return c.convert("RGB")
 
 
