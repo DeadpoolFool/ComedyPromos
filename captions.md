@@ -16,7 +16,7 @@ Tickets: link in bio 🎟️
 
 ## Caption for the flyer post (Artem's own words, tidied)
 
-Back in the LBC Fall Fest 🍂 Last festival I made it to the semifinals and finished 36th out of 400 comics. Let's see how far I can go this time.
+Back in the LBC Fall Fest 🍂 Last festival I made it to the semifinals and finished in the top 36 out of 400 comics. Let's see how far I can go this time.
 
 Saturday, Oct 17 at 7PM at The Buddha Room (410 8th Ave, 2nd floor). The audience picks who moves on, so having you in the room matters. Let me know if you're free that night. Really appreciate the support 🙏
 
