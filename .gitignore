@@ -1,0 +1,9 @@
+# build intermediates; finished assets live in each show's out/
+*/beat*.html
+*/beat*.png
+*/*_1080x*.html
+*/feed_photo.jpg
+*/story_photo.jpg
+*/reel_bg.jpg
+*/logo_cream.png
+__pycache__/

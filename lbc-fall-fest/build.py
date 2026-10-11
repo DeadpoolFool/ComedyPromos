@@ -1,6 +1,6 @@
 """LBC Fall Fest promo: story + feed stills, and a 15s vertical reel.
 
-Usage: python3 build.py   (drop logo.png next to this file to include the silhouette logo)
+Usage: python3 build.py   (uses ../brand/logo_silhouette.png; a logo.png here overrides it)
 """
 import subprocess
 from pathlib import Path
@@ -19,13 +19,13 @@ SHOW = {
     "event": "LBC FALL FEST",
     "round": "PRELIMINARY ROUND",
     "date": "SAT OCT 17",
-    "time": "7PM",
+    "time": "6:30PM",  # Artem's standing rule: show seating (showtime 7PM minus 30 min), labelled SEATING
     "venue": "THE BUDDHA ROOM",
     "addr": "410 8TH AVE, 2ND FLOOR",
     "prize": "$1,500 + 10 SHOW SPOTS",
 }
 
-LOGO = next((HERE / n for n in ("logo.png", "IMG_1690.png", "IMG_1689.png") if (HERE / n).exists()), None)
+LOGO = next((p for p in (HERE / "logo.png", HERE.parent / "brand" / "logo_silhouette.png") if p.exists()), None)
 
 
 def prep_logo():
@@ -36,7 +36,7 @@ def prep_logo():
     im = Image.open(LOGO).convert("RGBA")
     a = np.array(im)
     lum = a[..., :3].mean(axis=2)
-    a[..., 3] = np.where(lum > 200, 0, 255)
+    a[..., 3] = np.where(lum > 200, 0, a[..., 3])  # keep the PNG's own transparency
     a[..., 0], a[..., 1], a[..., 2] = 0xEF, 0xE6, 0xD2
     p = HERE / "logo_cream.png"
     Image.fromarray(a).save(p)
@@ -91,11 +91,11 @@ h1 {{ font-size:170px; line-height:.92; margin-top:24px; }}
 </style></head><body>
 <img class="photo" src="file://{HERE}/story_photo.jpg"><div class="fade"></div>{logo_tag(logo)}
 <div class="info">
-  <div class="mono kicker"><span class="chip">{SHOW['event']} · {SHOW['round']}</span></div>
+  <div class="mono kicker"><span class="chip">{SHOW['event']}</span></div>
   <h1 class="anton">Your laugh<br><span class="red">is my vote.</span></h1>
   <div class="barlow sub">The audience picks who wins {SHOW['prize'].lower()}.<br>I need you there, and I need you loud.</div>
   <div class="anton date">{SHOW['date']} · <span class="red">{SHOW['time']}</span></div>
-  <div class="mono venue">{SHOW['venue']}<br>{SHOW['addr']} · MIDTOWN</div>
+  <div class="mono venue"><span class="red">SEATING {SHOW['time']}</span> · {SHOW['venue']}<br>{SHOW['addr']} · MIDTOWN</div>
 </div>
 <div class="mono cta">GET TICKETS → LINK IN BIO</div>
 <div class="mono foot"><span>@ARTEMISFUNNY</span><span class="red">@LAUGHINGBUDDHACOMEDY</span></div>
@@ -111,9 +111,9 @@ body {{ width:1080px; height:1350px; background:#000; position:relative; overflo
 .info {{ position:absolute; top:560px; left:56px; right:56px; }}
 .kicker {{ font-size:26px; letter-spacing:2px; }}
 h1 {{ font-size:150px; line-height:.92; margin-top:20px; }}
-.row {{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; }}
-.date {{ font-size:84px; line-height:1; }}
-.venue {{ font-size:26px; line-height:1.45; text-align:right; letter-spacing:1px; }}
+.row {{ margin-top:26px; }}
+.date {{ font-size:84px; line-height:1; white-space:nowrap; }}
+.venue {{ font-size:25px; line-height:1.45; margin-top:12px; letter-spacing:1px; white-space:nowrap; }}
 .prize {{ font-size:40px; margin-top:22px; }}
 .cta {{ position:absolute; left:0; right:0; top:1196px; height:88px; background:{RED};
         display:flex; align-items:center; justify-content:center; font-size:34px; letter-spacing:2px; }}
@@ -122,12 +122,12 @@ h1 {{ font-size:150px; line-height:.92; margin-top:20px; }}
 </style></head><body>
 <img class="photo" src="file://{HERE}/feed_photo.jpg"><div class="fade"></div>{logo_tag(logo)}
 <div class="info">
-  <div class="mono kicker"><span class="chip">{SHOW['event']} · {SHOW['round']}</span></div>
+  <div class="mono kicker"><span class="chip">{SHOW['event']}</span></div>
   <h1 class="anton">Your laugh<br><span class="red">is my vote.</span></h1>
   <div class="barlow prize">Audience-judged. {SHOW['prize'].title().replace('Spots','spots').replace('Show','show')} on the line.</div>
   <div class="row">
     <div class="anton date">{SHOW['date']} · <span class="red">{SHOW['time']}</span></div>
-    <div class="mono venue">{SHOW['venue']}<br>{SHOW['addr']}</div>
+    <div class="mono venue"><span class="red">SEATING {SHOW['time']}</span> · {SHOW['venue']} · {SHOW['addr']}</div>
   </div>
 </div>
 <div class="mono cta">GET TICKETS → LINK IN BIO</div>
@@ -150,7 +150,7 @@ def reel_beats(logo):
     ]
     card = f"""<div style="position:absolute;left:0;top:0;width:1080px;height:1920px;background:#000"></div>{logo_tag(logo)}
 <div style="position:absolute;left:64px;right:64px;top:420px">
-  <div class="mono" style="font-size:30px;letter-spacing:2px"><span class="chip">{SHOW['event']} · {SHOW['round']}</span></div>
+  <div class="mono" style="font-size:30px;letter-spacing:2px"><span class="chip">{SHOW['event']}</span></div>
   <div class="anton" style="font-size:170px;line-height:.92;margin-top:40px">Come<br><span class="red">be loud.</span></div>
   <div class="anton" style="font-size:120px;line-height:1;margin-top:70px">{SHOW['date']}</div>
   <div class="anton red" style="font-size:120px;line-height:1">{SHOW['time']}</div>
