@@ -12,7 +12,7 @@ Buy your ticket in advance. Advance sales decide who gets first pick of lineup s
 
 Tickets: link in bio 🎟️
 
-@laughingbuddhacomedy #LBC #LBCSF #LBCFF #standupcomedy #nycomedy
+@laughingbuddhacomedy #LBC #LBCFF #standupcomedy #nycomedy
 
 ## Caption for the flyer post (Artem's own words, tidied)
 
@@ -22,7 +22,7 @@ Saturday, Oct 17 at 7PM at The Buddha Room (410 8th Ave, 2nd floor). The audienc
 
 Like or DM me if you can come. Tickets: link in bio 🎟️
 
-@laughingbuddhacomedy #LBC #LBCSF #LBCFF #standupcomedy #nycomedy
+@laughingbuddhacomedy #LBC #LBCFF #standupcomedy #nycomedy
 
 ## Story
 
