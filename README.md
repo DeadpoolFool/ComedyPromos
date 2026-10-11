@@ -1,4 +1,4 @@
-# artemisfunny-promo
+# comedypromos
 
 Show and tour promo for @ARTEMISFUNNY: flyers, stories, reels, captions. One folder per show or run of shows, named `<slug>/`, with finished files in `<slug>/out/`.
 
