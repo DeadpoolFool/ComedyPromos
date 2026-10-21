@@ -1,6 +1,7 @@
 """Two-photo joke carousel slides. Usage: python3 split_posts.py spec.json"""
 import json
 import os
+import re
 import sys
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
@@ -8,6 +9,31 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 FONT = os.path.expanduser("~/.fonts/Poppins-SemiBold.ttf")
 W, H, GAP = 1080, 1350, 6
 PANEL_H = (H - GAP) // 2
+
+# Algospeak: words that get a post held back from Explore and Reels when Meta reads them off the image
+# (profanity, sex, violence, self-harm, drugs, hate), swapped for the sound-alikes comics use.
+# Matching is whole-word and case-insensitive; a capitalised word keeps its capital.
+ALGOSPEAK = {
+    "fuck": "fug", "fucking": "fugging", "fucked": "fugged", "fucker": "fugger", "motherfucker": "motherfugger",
+    "shit": "sh!t", "shitty": "sh!tty", "bullshit": "bullsh!t",
+    "sex": "seggs", "sexy": "seggsy", "sexual": "seggsual",
+    "porn": "corn", "dick": "dih", "dicks": "dihs", "cock": "c0ck", "pussy": "p*ssy",
+    "bitch": "b!tch", "bitches": "b!tches", "whore": "h0e", "slut": "sl*t",
+    "pedophile": "PDFile", "pedophiles": "PDFiles", "pedo": "PDF", "rape": "grape", "raped": "graped",
+    "kill": "unalive", "killed": "unalived", "suicide": "unalive", "dead": "unalive",
+    "nazi": "n@zi", "nazis": "n@zis", "hitler": "H!tler", "cocaine": "coke", "heroin": "her0in",
+}
+
+
+def algospeak(text, extra=None):
+    """'so fucking cold' -> 'so fugging cold'. `extra` adds or overrides swaps from the spec."""
+    swaps = {**ALGOSPEAK, **{k.lower(): v for k, v in (extra or {}).items()}}
+
+    def swap(m):
+        word, new = m.group(0), swaps[m.group(0).lower()]
+        return new[0].upper() + new[1:] if word[0].isupper() else new
+    pattern = r"\b(" + "|".join(sorted(map(re.escape, swaps), key=len, reverse=True)) + r")\b"
+    return re.sub(pattern, swap, text, flags=re.IGNORECASE)
 
 
 def panel(path):
@@ -72,9 +98,12 @@ def main():
         spec = json.load(f)
     out = spec.get("out", "out")
     os.makedirs(out, exist_ok=True)
+    extra = spec.get("algospeak", {})
     for name, slides in spec["carousels"].items():
-        for i, slide in enumerate(slides, 1):
-            img = build(spec["photos"], spec.get("handle", "@artemisfunny"), *slide)
+        for i, (top, setup, bottom, punch) in enumerate(slides, 1):
+            if spec.get("censor", True):
+                setup, punch = algospeak(setup, extra), algospeak(punch, extra)
+            img = build(spec["photos"], spec.get("handle", "@artemisfunny"), top, setup, bottom, punch)
             img.save(os.path.join(out, f"split_{name}_{i}.jpg"), quality=92)
 
 
