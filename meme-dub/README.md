@@ -1,0 +1,55 @@
+# meme-dub
+
+Takes a meme clip and a voice note from Artem, and gives back the meme with his face on the subject, his voice, lips synced to it, and his line as the burned-in caption. The caption is the hook, so it's whatever he says.
+
+First one: Bernie's "I am once again asking..." → "I am once again asking you to support my stand-up career." (`out/bernie-once-again.mp4`).
+
+## Making one
+
+1. Get the meme clip (mp4/mov, one clear face, ideally front-on and under ~10s).
+2. Artem records the line as a voice note. Dead air at the start and end is trimmed, so no need to be precise.
+3. Run:
+
+```bash
+python meme_dub.py --clip bernie.mov --voice take1.m4a --face face.jpg \
+    --erase-box 100,565,520,110 --out out/bernie-once-again.mp4
+```
+
+| Flag | What it does |
+|---|---|
+| `--face` | Photo of Artem. Front-facing, eyes visible, good light. `knowledge/Artem Headshot.jpeg` or an LBC stage shot both work. |
+| `--erase-box x,y,w,h` | Box around the clip's old caption, in pixels. White text inside it is painted out. Leave it off when the clip has no caption. |
+| `--caption "..."` | Use this text instead of the transcript (to fix a word or punch up the wording). |
+| `--caption-y 0.86` | Caption center as a fraction of the height. 0.86 sits where most meme captions are. |
+| `--no-caption` | Skip the caption. |
+| `--keep` | Keep the work folder (trimmed voice, fitted clip, cleaned clip) for debugging. |
+
+If the voice runs longer than the clip, the clip plays forward then backward until it's long enough. If it's shorter, the clip is cut to the voice.
+
+Finding the erase box: grab a frame with `ffmpeg -ss 1 -i clip.mov -frames:v 1 frame.png`, look at where the caption sits, and pad it by ~10px.
+
+## What it does
+
+1. Trims leading and trailing silence off the voice note (ffmpeg `silencedetect`).
+2. Fits the clip to the voice length.
+3. Inpaints the old caption out (OpenCV).
+4. Swaps Artem's face in (inswapper_128), lip-syncs to the voice (wav2lip_gan_96) and cleans up the face (GFPGAN 1.4), all via [FaceFusion](https://github.com/facefusion/facefusion).
+5. Transcribes the voice note (Whisper small.en via sherpa-onnx).
+6. Burns the caption in white Inter Bold with a soft shadow, two balanced lines, and muxes the audio.
+
+## Setup
+
+```bash
+git clone --depth 1 https://github.com/facefusion/facefusion.git meme-dub/facefusion
+pip install -r meme-dub/facefusion/requirements.txt -r meme-dub/requirements.txt
+```
+
+FaceFusion downloads its models from GitHub on the first run. The Whisper model (~600 MB) downloads into `meme-dub/.models/` on the first transcription. Both folders are gitignored.
+
+On CPU a 5-second 720×720 clip takes about 12 minutes, mostly the face enhancer. A GPU cuts that to under a minute.
+
+## Notes
+
+- The swap keeps the meme subject's hair and glasses and takes Artem's face and beard. On Bernie that's the joke. On a subject with a very different head shape it can look off, so check a frame before posting.
+- Wav2lip only redraws the mouth at 96px, so close-ups look softer around the lips than the rest of the face.
+- Posting: these are reels. Post the clip as-is (square is fine) and put the hook in the first line of the IG caption too.
