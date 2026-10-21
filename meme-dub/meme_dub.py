@@ -187,11 +187,12 @@ def caption_png(text, size, dst, center_y, font_px):
     Image.alpha_composite(shadow, img).save(dst)
 
 
-def facefusion(ff_dir, face, voice, target, dst, threads):
+def facefusion(ff_dir, face, voice, target, dst, threads, lip_model, lip_weight):
     run([sys.executable, "facefusion.py", "headless-run", "-s", Path(face).resolve(),
          Path(voice).resolve(), "-t", Path(target).resolve(), "-o", Path(dst).resolve(),
          "--processors", "face_swapper", "lip_syncer", "face_enhancer",
-         "--face-swapper-model", "inswapper_128", "--lip-syncer-model", "wav2lip_gan_96",
+         "--face-swapper-model", "inswapper_128", "--lip-syncer-model", lip_model,
+         "--lip-syncer-weight", str(lip_weight),
          "--face-enhancer-model", "gfpgan_1.4", "--face-enhancer-blend", "60",
          "--output-video-quality", "90", "--execution-thread-count", str(threads)], cwd=ff_dir)
 
@@ -209,6 +210,11 @@ def main():
     ap.add_argument("--no-caption", action="store_true")
     ap.add_argument("--facefusion", default=str(HERE / "facefusion"))
     ap.add_argument("--models", default=str(HERE / ".models"))
+    ap.add_argument("--lip-model", default="edtalk_256",
+                    choices=["edtalk_256", "wav2lip_gan_96", "wav2lip_96"])
+    ap.add_argument("--lip-weight", type=float, default=1.0, help="mouth movement strength, 0-1")
+    ap.add_argument("--lip-lead-ms", type=int, default=133,
+                    help="how far the lip-sync model runs ahead of the audio; measured ~4 frames")
     ap.add_argument("--threads", type=int, default=4)
     ap.add_argument("--keep", action="store_true", help="keep the work folder")
     args = ap.parse_args()
@@ -231,19 +237,27 @@ def main():
             clean = work / "clean.mp4"
             erase_caption(target, clean, [int(v) for v in args.erase_box.split(",")])
             target = clean
+        # The lip-sync models open the mouth ~4 frames before the sound. Feed them a copy
+        # delayed by that much, then mux the undelayed voice back in at the end.
+        lip_voice = work / "voice_lip.wav"
+        run(["ffmpeg", "-v", "error", "-y", "-i", voice, "-af",
+             f"adelay={args.lip_lead_ms}:all=1", lip_voice])
         swapped = work / "swapped.mp4"
-        facefusion(args.facefusion, args.face, voice, target, swapped, args.threads)
+        facefusion(args.facefusion, args.face, lip_voice, target, swapped, args.threads,
+                   args.lip_model, args.lip_weight)
 
+        audio = ["-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out]
         if args.no_caption:
-            shutil.copy(swapped, out)
+            run(["ffmpeg", "-v", "error", "-y", "-i", swapped, "-i", voice,
+                 "-map", "0:v", "-map", "1:a", "-c:v", "copy"] + audio)
         else:
             _, video = probe(swapped)
             size = (int(video["width"]), int(video["height"]))
             png = work / "caption.png"
             caption_png(text, size, png, size[1] * args.caption_y, args.font_px or int(size[0] * 0.045))
-            run(["ffmpeg", "-v", "error", "-y", "-i", swapped, "-i", png, "-filter_complex",
-                 "[0:v][1:v]overlay=0:0", "-c:v", "libx264", "-crf", "16", "-pix_fmt", "yuv420p",
-                 "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out])
+            run(["ffmpeg", "-v", "error", "-y", "-i", swapped, "-i", png, "-i", voice,
+                 "-filter_complex", "[0:v][1:v]overlay=0:0[v]", "-map", "[v]", "-map", "2:a",
+                 "-c:v", "libx264", "-crf", "16", "-pix_fmt", "yuv420p"] + audio)
         print(out)
     finally:
         if args.keep:

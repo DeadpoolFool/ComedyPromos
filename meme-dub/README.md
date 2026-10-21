@@ -22,6 +22,9 @@ python meme_dub.py --clip bernie.mov --voice take1.m4a --face face.jpg \
 | `--caption "..."` | Use this text instead of the transcript (to fix a word or punch up the wording). |
 | `--caption-y 0.86` | Caption center as a fraction of the height. 0.86 sits where most meme captions are. |
 | `--no-caption` | Skip the caption. |
+| `--lip-model` | `edtalk_256` (default, sharper mouth) or `wav2lip_gan_96` (the older 96px model). |
+| `--lip-weight` | Mouth movement strength, 0 to 1. Default 1.0; FaceFusion's own default of 0.5 looked mumbled. |
+| `--lip-lead-ms` | Timing correction for the lip-sync model. Default 133 (4 frames at 30 fps). |
 | `--keep` | Keep the work folder (trimmed voice, fitted clip, cleaned clip) for debugging. |
 
 If the voice runs longer than the clip, the clip plays forward then backward until it's long enough. If it's shorter, the clip is cut to the voice.
@@ -33,7 +36,7 @@ Finding the erase box: grab a frame with `ffmpeg -ss 1 -i clip.mov -frames:v 1 f
 1. Trims leading and trailing silence off the voice note (ffmpeg `silencedetect`).
 2. Fits the clip to the voice length.
 3. Inpaints the old caption out (OpenCV).
-4. Swaps Artem's face in (inswapper_128), lip-syncs to the voice (wav2lip_gan_96) and cleans up the face (GFPGAN 1.4), all via [FaceFusion](https://github.com/facefusion/facefusion).
+4. Swaps Artem's face in (inswapper_128), lip-syncs to the voice (EDTalk 256 at full strength) and cleans up the face (GFPGAN 1.4), all via [FaceFusion](https://github.com/facefusion/facefusion). The lip-sync models open the mouth about 4 frames before the sound, so the script feeds them the voice delayed by 133 ms and muxes the undelayed voice back in.
 5. Transcribes the voice note first thing (Whisper small.en via sherpa-onnx) and prints it as `caption: ...`. Whisper sometimes mishears a word ("stand of career"), so check that line and rerun with `--caption` if needed.
 6. Burns the caption in white Inter Bold with a soft shadow, two balanced lines, and muxes the audio.
 
@@ -51,5 +54,6 @@ On CPU a 5-second 720×720 clip takes about 12 minutes, mostly the face enhancer
 ## Notes
 
 - The swap keeps the meme subject's hair and glasses and takes Artem's face and beard. On Bernie that's the joke. On a subject with a very different head shape it can look off, so check a frame before posting.
-- Wav2lip only redraws the mouth at 96px, so close-ups look softer around the lips than the rest of the face.
+- Wav2lip only redraws the mouth at 96px and looked blurry under Artem's beard; EDTalk works at 256px.
+- To check sync without eyeballing it: track the inner-lip gap per frame (insightface 68-point landmarks, points 62 and 66) and correlate it with the audio loudness per frame. The peak should sit at lag 0. The first Bernie cut peaked at -4 frames, which is why it looked off.
 - Posting: these are reels. Post the clip as-is (square is fine) and put the hook in the first line of the IG caption too.
