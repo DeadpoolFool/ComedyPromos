@@ -52,5 +52,6 @@ A missing font falls back silently, so check `fc-list | grep -Ei "anton|space mo
 | Folder | Show | Date |
 |---|---|---|
 | `lbc-fall-fest/` | Laughing Buddha Comedy Festival (LBC Fall Fest) prelim, The Buddha Room | Sat Oct 17, 2026 |
+| `lbc-carousels/` | Photo carousels from the LBC Fall Fest prelim (Miguel's photos) | Oct 2026 |
 
 Earlier promos (June to September 2026) were made in claude.ai chats and never saved to a repo. They include the LBC Industry Showcase poster (`brand/example_flyer_june_showcase.png`), the "It's Too Fucking Hot Tour" July poster, the "Final NYC shows before Deportation to Swissy Lands" flyer, the Rooftop 105 Geneva poster and story, the X header, and the KGB business cards.
