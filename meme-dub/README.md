@@ -63,3 +63,4 @@ On CPU a 5-second 720×720 clip takes about 12 minutes, mostly the face enhancer
 `/mnt/project-files/photos/face-kit/` holds the 14 photos that make up Artem's face for every meme: 8 front-on selfies (eyes level, mouth closed, 300-450px faces) and 6 LBC stage shots turned less than 20 degrees from camera (stage light, mid-talk). `identity.npy` is their averaged ArcFace embedding, and `kit.json` lists each photo's similarity to it, all between 0.83 and 0.91.
 
 To add a photo, it should be front-on (under ~20 degrees of turn), sharp, with only his face in frame and a face at least ~150px wide. Drop it in the folder. The script picks up the whole folder. Leave out sunglasses, heavy shadow and shirtless shots. LBC shots 103 and 104 caught another comic, so they're excluded.
+- `likeness.py identity.npy out.mp4` scores how much a render looks like him (ArcFace similarity to the kit). One photo gave 0.73 on Bernie, the kit 0.82.
