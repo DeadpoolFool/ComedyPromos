@@ -17,7 +17,7 @@ python meme_dub.py --clip bernie.mov --voice take1.m4a --face face.jpg \
 
 | Flag | What it does |
 |---|---|
-| `--face` | One or more photos of Artem: front-facing, eyes visible, even light. Several get blended into one identity, which looks more like him. The five in `/mnt/project-files/photos/selfies/` are the set to use. |
+| `--face` | Photos of Artem, or a folder of them. Use the face kit: `--face /mnt/project-files/photos/face-kit`. Every photo in it gets blended into one identity, which looks more like him than any single shot. |
 | `--erase-box x,y,w,h` | Box around the clip's old caption, in pixels. White text inside it is painted out. Leave it off when the clip has no caption. |
 | `--caption "..."` | Use this text instead of the transcript (to fix a word or punch up the wording). |
 | `--caption-y 0.86` | Caption center as a fraction of the height. 0.86 sits where most meme captions are. |
@@ -57,3 +57,9 @@ On CPU a 5-second 720×720 clip takes about 12 minutes, mostly the face enhancer
 - Wav2lip only redraws the mouth at 96px and looked blurry under Artem's beard; EDTalk works at 256px.
 - To check sync without eyeballing it: track the inner-lip gap per frame (insightface 68-point landmarks, points 62 and 66) and correlate it with the audio loudness per frame. The peak should sit at lag 0. The first Bernie cut peaked at -4 frames, which is why it looked off.
 - Posting: these are reels. Post the clip as-is (square is fine) and put the hook in the first line of the IG caption too.
+
+## Face kit
+
+`/mnt/project-files/photos/face-kit/` holds the 14 photos that make up Artem's face for every meme: 8 front-on selfies (eyes level, mouth closed, 300-450px faces) and 6 LBC stage shots turned less than 20 degrees from camera (stage light, mid-talk). `identity.npy` is their averaged ArcFace embedding, and `kit.json` lists each photo's similarity to it, all between 0.83 and 0.91.
+
+To add a photo, it should be front-on (under ~20 degrees of turn), sharp, with only his face in frame and a face at least ~150px wide. Drop it in the folder. The script picks up the whole folder. Leave out sunglasses, heavy shadow and shirtless shots. LBC shots 103 and 104 caught another comic, so they're excluded.

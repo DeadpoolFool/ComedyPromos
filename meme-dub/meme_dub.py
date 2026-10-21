@@ -202,7 +202,7 @@ def main():
     ap.add_argument("--clip", required=True, help="meme video")
     ap.add_argument("--voice", required=True, help="Artem's voice note")
     ap.add_argument("--face", required=True, nargs="+",
-                    help="front-facing photos of Artem; several are blended for a closer likeness")
+                    help="photos of Artem, or a face-kit folder; several are blended for a closer likeness")
     ap.add_argument("--out", required=True)
     ap.add_argument("--caption", help="caption text; default is a transcript of the voice note")
     ap.add_argument("--erase-box", help="x,y,w,h of the clip's old burned-in caption")
@@ -244,7 +244,10 @@ def main():
         run(["ffmpeg", "-v", "error", "-y", "-i", voice, "-af",
              f"adelay={args.lip_lead_ms}:all=1", lip_voice])
         swapped = work / "swapped.mp4"
-        facefusion(args.facefusion, args.face, lip_voice, target, swapped, args.threads,
+        faces = [str(f) for p in map(Path, args.face) for f in (
+            sorted(x for x in p.iterdir() if x.suffix.lower() in (".jpg", ".jpeg", ".png"))
+            if p.is_dir() else [p])]
+        facefusion(args.facefusion, faces, lip_voice, target, swapped, args.threads,
                    args.lip_model, args.lip_weight)
 
         audio = ["-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out]
