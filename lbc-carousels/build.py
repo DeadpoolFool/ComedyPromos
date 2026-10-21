@@ -6,13 +6,14 @@ Photos are fit to width and letterboxed, never cropped, so the sign and his body
 import os
 import sys
 
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 SRC = sys.argv[1] if len(sys.argv) > 1 else "/mnt/project-files/photos/lbc-prelim-2026-10-17/all"
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 FONTS = os.path.expanduser("~/.fonts")
 S = 1080
+INTER = "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf"  # closest to IG's Classic text
 BLACK, RED, CREAM = (10, 10, 10), (0xDF, 0x27, 0x31), (0xEF, 0xE6, 0xD2)
 
 
@@ -108,6 +109,52 @@ def notes_card(text):
     return img
 
 
+def caption_slide(n, text, at=0.88):
+    """Stage photo with the joke line typed over it in plain white, the way the caption sits on IG.
+
+    The photo is letterboxed (never cropped); the line sits low, like a subtitle.
+    """
+    img = dump_slide(n)
+    return caption(img, text, *photo_box(n), at)
+
+
+def photo_box(n):
+    """Top and height of photo n as dump_slide places it."""
+    h = photo(n).height
+    h = min(h, S)
+    return (S - h) // 2, h
+
+
+def caption(img, text, top, height, at, size=44):
+    d = ImageDraw.Draw(img)
+    fnt = ImageFont.truetype(INTER, size)
+    lines = wrap(d, text, fnt, 820)
+    lh = sum(fnt.getmetrics()) + 6
+    y = top + round(at * height) - (len(lines) - 1) * lh
+    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    sd = ImageDraw.Draw(shadow)
+    for i, line in enumerate(lines):
+        sd.text((S // 2 + 2, y + i * lh + 3), line, font=fnt, fill=(0, 0, 0, 200), anchor="ma")
+    shadow = shadow.filter(ImageFilter.GaussianBlur(3))
+    img.paste(shadow, (0, 0), shadow)
+    for i, line in enumerate(lines):
+        d.text((S // 2, y + i * lh), line, font=fnt, fill=(255, 255, 255), anchor="ma", stroke_width=2, stroke_fill=(0, 0, 0))
+    return img
+
+
+def stacked_slide(top_n, top_text, bottom_n, bottom_text):
+    """One slide, two stage shots: setup captioned on the top photo, punch on the bottom one."""
+    img = Image.new("RGB", (S, S), BLACK)
+    w = 960
+    y = 0
+    for n, text in ((top_n, top_text), (bottom_n, bottom_text)):
+        ph = photo(n, w)
+        img.paste(ph, ((S - w) // 2, y))
+        caption(img, text, y, ph.height, 0.9, size=36)
+        y += ph.height
+    return img
+
+
 def save(img, name):
     img.save(os.path.join(OUT, name), quality=92)
 
@@ -134,6 +181,27 @@ def main():
                     "We're both of the bad guys right now. And I promise you, I'm not one of the good ones."),
          "badguys_1.jpg")
     save(dump_slide(93), "badguys_2.jpg")
+
+    # 4. Caption-on-photo version of the same joke: one beat per slide, plain white text over the photo.
+    beats = [
+        (92, "Russians don't believe in a lot."),
+        (91, "Human rights. Borders. Paying for software."),
+        (89, "But we do believe in superstitions."),
+        (88, "Don't whistle inside the house, or you'll lose money."),
+        (102, "Don't split a pole, or you'll get into a fight."),
+        (93, "No keys on the table, or you have to invade Ukraine."),
+        (100, "I told my mom not to do that."),
+    ]
+    for i, (n, text) in enumerate(beats, 1):
+        save(caption_slide(n, text), f"captioned_{i}.jpg")
+
+    # 5. Two-photo single slides: setup on top, punch underneath.
+    save(stacked_slide(92, "I'm exactly what I look like. A Russian Jew.",
+                       93, "We're both of the bad guys right now. And I'm not one of the good ones."),
+         "stacked_badguys.jpg")
+    save(stacked_slide(91, "Russians don't believe in human rights, borders, or paying for software.",
+                       93, "But we do believe in superstitions. No keys on the table, or you have to invade Ukraine."),
+         "stacked_superstitions.jpg")
 
     # 3. Photo dump: no text on any slide, the caption does the talking.
     for i, n in enumerate([93, 92, 100, 89, 101, 103], 1):

@@ -2,6 +2,25 @@
 
 Three 1080x1080 carousels from Miguel's Laughing Buddha Comedy Festival photos. Rebuild with `python3 build.py <photos folder>`. Source photos live in project files at `photos/lbc-prelim-2026-10-17/all/`.
 
+## Captioned photos (the format Artem pointed to: NYT 2026-08-19, Zucker "The Year of the Carousel")
+
+### A. Russian Superstitions, one beat per photo (`out/captioned_1-7.jpg`)
+
+Each slide is a stage shot with one line of the joke typed over it in plain white, set low like a subtitle. Slide 7 is the tag, "I told my mom not to do that."
+
+Caption options:
+- We're a very spiritual people.
+- Russian folk wisdom.
+- (no caption, just the tags)
+
+### B. Two-photo single slides (`out/stacked_badguys.jpg`, `out/stacked_superstitions.jpg`)
+
+The setup goes on the top photo and the punch on the bottom one, so the whole joke sits on one slide. This is the shape of Jenny Gorelick's one-liner post.
+
+Caption options:
+- Don't clap.
+- That was a test.
+
 ## 1. Swipe for the punchline: Russian Superstitions (`out/superstitions_1-5.jpg`)
 
 The joke is told one line per slide, in the stage order from the 2026-10-13 tape fix (rights, borders, software, then whistle, pole, keys). It ends on "invade Ukraine". Every slide before the punch ends with an arrow so people keep swiping.
