@@ -34,7 +34,7 @@ Finding the erase box: grab a frame with `ffmpeg -ss 1 -i clip.mov -frames:v 1 f
 2. Fits the clip to the voice length.
 3. Inpaints the old caption out (OpenCV).
 4. Swaps Artem's face in (inswapper_128), lip-syncs to the voice (wav2lip_gan_96) and cleans up the face (GFPGAN 1.4), all via [FaceFusion](https://github.com/facefusion/facefusion).
-5. Transcribes the voice note (Whisper small.en via sherpa-onnx).
+5. Transcribes the voice note first thing (Whisper small.en via sherpa-onnx) and prints it as `caption: ...`. Whisper sometimes mishears a word ("stand of career"), so check that line and rerun with `--caption` if needed.
 6. Burns the caption in white Inter Bold with a soft shadow, two balanced lines, and muxes the audio.
 
 ## Setup

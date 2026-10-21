@@ -217,6 +217,12 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     work = Path(tempfile.mkdtemp(prefix="meme_dub_"))
     try:
+        # Transcribe the untouched note before the slow render, so a misheard word
+        # shows up in seconds (rerun with --caption to fix it).
+        text = None
+        if not args.no_caption:
+            text = args.caption or transcribe(args.voice, Path(args.models))
+            print(f"caption: {text}", file=sys.stderr)
         voice = work / "voice.wav"
         duration = trim_voice(args.voice, voice)
         target = work / "target.mp4"
@@ -231,8 +237,6 @@ def main():
         if args.no_caption:
             shutil.copy(swapped, out)
         else:
-            text = args.caption or transcribe(voice, Path(args.models))
-            print(f"caption: {text}", file=sys.stderr)
             _, video = probe(swapped)
             size = (int(video["width"]), int(video["height"]))
             png = work / "caption.png"
