@@ -187,9 +187,9 @@ def caption_png(text, size, dst, center_y, font_px):
     Image.alpha_composite(shadow, img).save(dst)
 
 
-def facefusion(ff_dir, face, voice, target, dst, threads, lip_model, lip_weight):
-    run([sys.executable, "facefusion.py", "headless-run", "-s", Path(face).resolve(),
-         Path(voice).resolve(), "-t", Path(target).resolve(), "-o", Path(dst).resolve(),
+def facefusion(ff_dir, faces, voice, target, dst, threads, lip_model, lip_weight):
+    run([sys.executable, "facefusion.py", "headless-run", "-s",
+         *[Path(f).resolve() for f in faces], Path(voice).resolve(), "-t", Path(target).resolve(), "-o", Path(dst).resolve(),
          "--processors", "face_swapper", "lip_syncer", "face_enhancer",
          "--face-swapper-model", "inswapper_128", "--lip-syncer-model", lip_model,
          "--lip-syncer-weight", str(lip_weight),
@@ -201,7 +201,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--clip", required=True, help="meme video")
     ap.add_argument("--voice", required=True, help="Artem's voice note")
-    ap.add_argument("--face", required=True, help="clear, front-facing photo of Artem")
+    ap.add_argument("--face", required=True, nargs="+",
+                    help="front-facing photos of Artem; several are blended for a closer likeness")
     ap.add_argument("--out", required=True)
     ap.add_argument("--caption", help="caption text; default is a transcript of the voice note")
     ap.add_argument("--erase-box", help="x,y,w,h of the clip's old burned-in caption")

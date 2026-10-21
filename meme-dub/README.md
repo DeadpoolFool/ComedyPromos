@@ -17,7 +17,7 @@ python meme_dub.py --clip bernie.mov --voice take1.m4a --face face.jpg \
 
 | Flag | What it does |
 |---|---|
-| `--face` | Photo of Artem. Front-facing, eyes visible, good light. `knowledge/Artem Headshot.jpeg` or an LBC stage shot both work. |
+| `--face` | One or more photos of Artem: front-facing, eyes visible, even light. Several get blended into one identity, which looks more like him. The five in `/mnt/project-files/photos/selfies/` are the set to use. |
 | `--erase-box x,y,w,h` | Box around the clip's old caption, in pixels. White text inside it is painted out. Leave it off when the clip has no caption. |
 | `--caption "..."` | Use this text instead of the transcript (to fix a word or punch up the wording). |
 | `--caption-y 0.86` | Caption center as a fraction of the height. 0.86 sits where most meme captions are. |
