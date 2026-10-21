@@ -59,8 +59,9 @@ body {{ width:1080px; height:1920px; background:#000; color:{CREAM}; position:re
 h1 {{ font-size:150px; line-height:.92; margin-top:26px; }}
 .sub {{ font-size:52px; line-height:1.12; margin-top:30px; }}
 .tag {{ font-size:30px; letter-spacing:1px; margin-top:22px; }}
-.sign {{ position:absolute; left:64px; right:64px; top:1530px; font-size:34px; letter-spacing:2px; text-align:center; }}
-.band {{ position:absolute; left:140px; right:140px; top:1600px; height:150px; border:3px dashed rgba(239,230,210,.25); }}
+.sign {{ position:absolute; left:64px; right:64px; top:1520px; font-size:34px; letter-spacing:2px; text-align:center; }}
+.url {{ font-size:28px; letter-spacing:1px; margin-top:12px; color:{RED}; text-transform:lowercase; }}
+.band {{ position:absolute; left:140px; right:140px; top:1630px; height:140px; border:3px dashed rgba(239,230,210,.25); }}
 .foot {{ position:absolute; left:64px; right:64px; top:1800px; text-align:right; font-size:28px; letter-spacing:1px; }}
 """
 
@@ -76,7 +77,7 @@ def story_html(logo):
   <div class="barlow sub">Five days was not a tenure.<br>It was a teaser.</div>
   <div class="mono tag">The Mooch got ten. <span class="red">We demand parity.</span></div>
 </div>
-<div class="mono sign">Sign the petition &darr;</div>
+<div class="mono sign">Sign the petition &darr;<div class="url">change.org/reinstatekatiezacharia</div></div>
 <div class="band"></div>
 <div class="mono foot">@ARTEMISFUNNY</div>
 </body></html>"""
