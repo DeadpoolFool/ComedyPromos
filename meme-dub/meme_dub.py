@@ -74,11 +74,21 @@ def trim_voice(src, dst, pad=0.08):
     return end - start
 
 
-def fit_clip(src, dst, duration):
-    """Make the clip exactly `duration` long, ping-ponging when the voice outlasts it."""
-    clip_len, _ = probe(src)
+def fit_clip(src, dst, duration, max_slow=2.0):
+    """Make the clip exactly `duration` long.
+
+    A shorter clip is slowed down with motion-interpolated frames (up to `max_slow`x),
+    which reads as natural on talking-head memes. Only past that does it ping-pong,
+    since the reverse turnaround is visible.
+    """
+    clip_len, video = probe(src)
+    fps = eval(video["r_frame_rate"])  # e.g. "30000/1001"
     if clip_len >= duration:
         vf = f"[0:v]trim=duration={duration:.3f},setpts=PTS-STARTPTS[v]"
+    elif duration / clip_len <= max_slow:
+        factor = duration / clip_len * 1.02  # margin so the last frame outlasts the voice
+        vf = (f"[0:v]setpts={factor:.5f}*PTS,minterpolate=fps={fps:.3f}:mi_mode=mci:"
+              f"mc_mode=aobmc:vsbmc=1,trim=duration={duration:.3f},setpts=PTS-STARTPTS[v]")
     else:
         loops = int(duration // (2 * clip_len)) + 1
         split = f"[0:v]split=2[f][b];[b]reverse[rv];[f]split={loops}" + "".join(

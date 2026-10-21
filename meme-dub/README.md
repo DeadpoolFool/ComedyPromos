@@ -27,7 +27,7 @@ python meme_dub.py --clip bernie.mov --voice take1.m4a --face face.jpg \
 | `--lip-lead-ms` | Timing correction for the lip-sync model. Default 133 (4 frames at 30 fps). |
 | `--keep` | Keep the work folder (trimmed voice, fitted clip, cleaned clip) for debugging. |
 
-If the voice runs longer than the clip, the clip plays forward then backward until it's long enough. If it's shorter, the clip is cut to the voice.
+If the voice runs longer than the clip, the clip is slowed down (up to 2x) with motion-interpolated in-between frames, which looks natural on a talking head. Past 2x it plays forward then backward, which shows a visible turnaround. If the voice is shorter, the clip is cut to it.
 
 Finding the erase box: grab a frame with `ffmpeg -ss 1 -i clip.mov -frames:v 1 frame.png`, look at where the caption sits, and pad it by ~10px.
 
