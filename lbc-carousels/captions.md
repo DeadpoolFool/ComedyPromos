@@ -2,6 +2,21 @@
 
 Three 1080x1080 carousels from Miguel's Laughing Buddha Comedy Festival photos. Rebuild with `python3 build.py <photos folder>`. Source photos live in project files at `photos/lbc-prelim-2026-10-17/all/`.
 
+## Two-photo joke posts (THE format, matched to the examples in Zucker's "The Year of the Carousel")
+
+There's one 1080x1350 image per joke. The setup is captioned on the top photo and the punch on the bottom one, both from the same camera angle so only his face changes, with @artemisfunny bottom right. These follow Jenny Gorelick's "late 20's / ...34", JFL's Marcello post and Michael Good's grid. Build them with `python3 split_posts.py`.
+
+- `out/split_badguys.jpg` (92 -> 93)
+- `out/split_superstitions.jpg` (88 -> 89)
+- `out/split_jewish_viagra.jpg` (96 -> 97): Notion says untested on stage, so treat the post as the test
+- `out/split_other_team.jpg` (91 -> 92): 7/18 tape wording, no "multiple-nationality" label
+
+Post them one per day as single images, or put 3-4 in one carousel. Keep the captions short, like Jenny's "happy birthday to me":
+- Bad Guys: "don't clap"
+- Superstitions: "we're a very spiritual people"
+- Jewish Viagra: "ask your doctor"
+- Other Team: "every argument is World War II"
+
 ## Captioned photos (the format Artem pointed to: NYT 2026-08-19, Zucker "The Year of the Carousel")
 
 ### A. Russian Superstitions, one beat per photo (`out/captioned_1-7.jpg`)
