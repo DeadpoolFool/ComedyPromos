@@ -1,6 +1,6 @@
 # Katie Zacharia petition: story copy
 
-Link sticker: https://www.change.org/p/reinstate-katie-zacharia-an-appeal-by-comedians
+Link sticker: https://c.org/mDYYxzhc55  (English re-launch, 2026-10-21; the first pt-BR petition is retired)
 Sticker text: SIGN THE APPEAL
 
 Headline swaps for the story (all lifted from or built on the petition text):
