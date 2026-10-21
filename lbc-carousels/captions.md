@@ -4,14 +4,14 @@ Three 1080x1080 carousels from Miguel's Laughing Buddha Comedy Festival photos. 
 
 ## Two-photo joke posts (THE format, matched to the examples in Zucker's "The Year of the Carousel")
 
-There's one 1080x1350 image per joke. The setup is captioned on the top photo and the punch on the bottom one, both from the same camera angle so only his face changes, with @artemisfunny bottom right. These follow Jenny Gorelick's "late 20's / ...34", JFL's Marcello post and Michael Good's grid. Build them with `python3 split_posts.py`.
+Each joke runs in full as a carousel. Every slide is one 1080x1350 image of two photos: one beat captioned on the top photo, the next beat on the bottom one. Both photos are from the same camera angle, and @artemisfunny sits bottom right. This follows Jenny Gorelick's "late 20's / ...34", JFL's Marcello post and Michael Good's longer bits. Build them with `python3 split_posts.py`.
 
-- `out/split_badguys.jpg` (92 -> 93)
-- `out/split_superstitions.jpg` (88 -> 89)
-- `out/split_jewish_viagra.jpg` (96 -> 97): Notion says untested on stage, so treat the post as the test
-- `out/split_other_team.jpg` (91 -> 92): 7/18 tape wording, no "multiple-nationality" label
+- `out/split_badguys_1-2.jpg`: reveal, don't clap, bad guys, not one of the good ones
+- `out/split_superstitions_1-4.jpg`: the whole list, ending on the "I told my mom not to do that / and here we are" tag
+- `out/split_jewish_viagra_1-2.jpg`: Lactaid, then the four-hours doctor button. Notion says untested on stage, so treat the post as the test
+- `out/split_other_team_1-4.jpg`: Notion joke field in full (no "multiple-nationality" label), through "allies... axis"
 
-Post them one per day as single images, or put 3-4 in one carousel. Keep the captions short, like Jenny's "happy birthday to me":
+Post one joke per day. Keep the captions short, like Jenny's "happy birthday to me":
 - Bad Guys: "don't clap"
 - Superstitions: "we're a very spiritual people"
 - Jewish Viagra: "ask your doctor"

@@ -1,6 +1,6 @@
 """Two-photo joke posts, the format from Zucker's "The Year of the Carousel" (Jenny Gorelick, JFL, Michael Good).
 
-One 1080x1350 image per joke: the setup captioned on the top photo, the punch on the bottom one,
+Each slide is one 1080x1350 image: a setup captioned on the top photo, the punch on the bottom one,
 both from the same camera position so only his face changes. Each photo is trimmed at the sides
 only (about 5% each side) to fit its half, so the sign and his body stay in frame.
 
@@ -19,19 +19,33 @@ W, H, GAP = 1080, 1350, 6
 PANEL_H = (H - GAP) // 2
 HANDLE = "@artemisfunny"
 
-# (file name, top photo, setup, bottom photo, punch). Wording follows each joke's Notion page and
-# its latest tape fix.
-POSTS = [
-    ("split_badguys", 92, "I'm exactly what I look like. A Russian Jew. We're both of the bad guys right now.",
-     93, "And I promise you, I'm not one of the good ones."),
-    ("split_superstitions", 88,
-     "Russians don't believe in human rights, borders, or paying for software. But we do believe in superstitions.",
-     89, "If you leave your keys on the table, you have to invade Ukraine."),
-    ("split_jewish_viagra", 96, "I'm 38, I needed a little help to finish. So I took the Jewish Viagra...",
-     97, "Lactaid."),
-    ("split_other_team", 91, "My wife is Yemeni, Hungarian, Austrian and German.",
-     92, "If you're keeping track, that's the entire other team."),
-]
+# Each joke runs in full, one setup/punch pair per slide, like Michael Good's longer bits.
+# Wording is the Notion Joke field (multiple-nationality label removed per Artem, 2026-10-16) plus the
+# tags his tapes confirmed. Photo pairs share a camera angle so only his face changes.
+CAROUSELS = {
+    "badguys": [
+        (97, "I'm exactly what I look like. A Russian Jew.", 96, "No no, don't clap."),
+        (92, "We're both of the bad guys right now.", 93, "And I promise you, I'm not one of the good ones."),
+    ],
+    "superstitions": [
+        (91, "Russians don't believe in a lot.", 92, "Borders, human rights, or paying for software."),
+        (88, "We do believe in superstitions though. Don't split poles, or you'll get into a fight.",
+         89, "Don't whistle inside the house, or you'll lose money."),
+        (92, "No keys on the table...", 93, "...or you have to invade Ukraine."),
+        (101, "I told my mom not to do that.", 102, "And here we are."),
+    ],
+    "jewish_viagra": [
+        (96, "Fondue date. I'm 38, I needed a little help to finish. So I took the Jewish Viagra...", 97, "Lactaid."),
+        (88, "The date lasted more than four hours, so I called my doctor.",
+         89, "He told me to stop bragging and hung up."),
+    ],
+    "other_team": [
+        (91, "My wife is German, Hungarian, Austrian and Yemeni.", 92, "She's literally the entire other team."),
+        (101, "Yes, I am sleeping with the enemy.", 102, "Every argument in our one-bedroom apartment is World War II."),
+        (88, "Don't worry, we didn't get divorced.", 89, "She hates paperwork."),
+        (92, "We did decide to open the marriage though...", 93, "She needed more allies. Err... axis."),
+    ],
+}
 
 
 def panel(n):
@@ -93,8 +107,9 @@ def build(top_n, setup, bottom_n, punch):
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    for name, top_n, setup, bottom_n, punch in POSTS:
-        build(top_n, setup, bottom_n, punch).save(os.path.join(OUT, f"{name}.jpg"), quality=92)
+    for name, slides in CAROUSELS.items():
+        for i, slide in enumerate(slides, 1):
+            build(*slide).save(os.path.join(OUT, f"split_{name}_{i}.jpg"), quality=92)
 
 
 if __name__ == "__main__":
