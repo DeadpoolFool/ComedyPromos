@@ -1,0 +1,4 @@
+sherpa-onnx
+opencv-python-headless
+pillow
+numpy
