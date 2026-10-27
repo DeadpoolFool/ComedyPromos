@@ -18,4 +18,4 @@ Artem asked for different photos (2026-10-27). Slide 1 is 101 over 102 (same fro
 
 ## v3, 4K tape stills (`out/split_nike_ai_v3_1-2.jpg`)
 
-Frames from the 4K Guyznite tape, Broadway Comedy Club 01/15/26 (`Guyznite 01_15_26 Broadway - Artem.mp4`, 3840x2160), not from the Nike bit itself. Seconds 29/39 and 45/57 into the tape, all one camera framing with the Broadway Comedy Club sign in shot. Neutral setups on 30 and 46, punches on the smiles at 40 and 58. Crops (2088x1300, sign to waist) are in `stills/guyznite-2026-01-15/`.
+Frames from the 4K Guyznite tape, Broadway Comedy Club 01/15/26 (`Guyznite 01_15_26 Broadway - Artem.mp4`, 3840x2160), not from the Nike bit itself. Seconds 29/39 and 45/56.6 into the tape, all one camera framing with the Broadway Comedy Club sign in shot. Neutral setups on 30 and 46, punches on the smiles at 40 and 56_6 (58 had his eyes closed, swapped 2026-10-27). Crops (2088x1300, sign to waist) are in `stills/guyznite-2026-01-15/`.
