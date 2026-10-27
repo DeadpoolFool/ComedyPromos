@@ -11,3 +11,7 @@ Caption options:
 - just do it
 - someone has to build the robots
 - Nike's going AI. Don't worry about the kids.
+
+## v2, other stills (`out/split_nike_ai_v2_1-2.jpg`)
+
+Artem asked for different photos (2026-10-27). Slide 1 is 101 over 102 (same front angle), slide 2 is 89 over 102. 102 is the only smiling horizontal not already used in other carousels. 101 and 102 are wide room shots, so they're cropped in to about 1.6x (62% of frame height from the top, centred on him) to read as medium shots; the crops go in `stills/` before running `nike_ai_v2.json`.
