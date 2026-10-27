@@ -1,0 +1,11 @@
+{
+ "photos": "/mnt/project-files/photos/lbc-prelim-2026-10-17/all",
+ "out": "joke-carousels/out",
+ "handle": "@artemisfunny",
+ "carousels": {
+  "nike_ai": [
+   ["92.jpg", "Nike is going to automate their manufacturing with AI. How do we feel about that? Fugged up, right?", "93.jpg", "What are those kids going to do for work now?"],
+   ["97.jpg", "Fugging with you guys.", "96.jpg", "Who do you think is going to build the robots? They'll be fine."]
+  ]
+ }
+}
