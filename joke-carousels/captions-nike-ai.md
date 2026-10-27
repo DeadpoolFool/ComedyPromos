@@ -15,3 +15,7 @@ Caption options:
 ## v2, other stills (`out/split_nike_ai_v2_1-2.jpg`)
 
 Artem asked for different photos (2026-10-27). Slide 1 is 101 over 102 (same front angle), slide 2 is 89 over 102. 102 is the only smiling horizontal not already used in other carousels. 101 and 102 are wide room shots, so they're cropped in to about 1.6x (62% of frame height from the top, centred on him) to read as medium shots; the crops go in `stills/` before running `nike_ai_v2.json`.
+
+## v3, 4K tape stills (`out/split_nike_ai_v3_1-2.jpg`)
+
+Frames from the 4K Guyznite tape, Broadway Comedy Club 01/15/26 (`Guyznite 01_15_26 Broadway - Artem.mp4`, 3840x2160), not from the Nike bit itself. Seconds 29/39 and 45/57 into the tape, all one camera framing with the Broadway Comedy Club sign in shot. Neutral setups on 30 and 46, punches on the smiles at 40 and 58. Crops (2088x1300, sign to waist) are in `stills/guyznite-2026-01-15/`.
