@@ -1,0 +1,11 @@
+{
+ "photos": "joke-carousels/stills/thestand-2026-03-21",
+ "out": "joke-carousels/out",
+ "handle": "@artemisfunny",
+ "carousels": {
+  "safe_word": [
+   ["neutral/stand_150_5.jpg", "The rest of the set will be spicy, so I want us to have a safe word, okay?", "smile/stand_208_0.jpg", "The safe word is: \"No, don't stop, keep going, this is totally consensual.\""],
+   ["neutral/stand_183_5.jpg", "\"I agree. I'm enjoying this very much.\"", "smile/stand_24_0.jpg", "You gotta say it in exactly the same order."]
+  ]
+ }
+}
