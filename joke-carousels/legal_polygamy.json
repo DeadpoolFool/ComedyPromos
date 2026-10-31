@@ -4,7 +4,12 @@
  "handle": "@artemisfunny",
  "carousels": {
   "legal_polygamy": [
-   ["neutral/smp_0546.jpg", "Did you know polygamy is actually legal in America?", "smile/smp_0551.jpg", "They keep letting Woody Allen adopt more kids after his first daughter that he married."]
+   [
+    "neutral/smp_0546.jpg",
+    "Did you know polygamy is legal in America?",
+    "smile/smp_0551.jpg",
+    "Yup, they let Woody Allen adopt 2 more kids after he married his first one."
+   ]
   ]
  }
 }
