@@ -62,7 +62,7 @@ html, body {{ background:#0b0b0b; color:{CREAM}; overflow:hidden; }}
 .s .t {{ font-weight:700; color:{CREAM}; }}
 .final .name {{ color:{RED}; }}
 .secret .name {{ color:{RED}; letter-spacing:1px; }}
-.secret .name::after {{ content:"?"; color:{CREAM}; }}
+.secret .name::after {{ content:"!"; color:{CREAM}; }}
 .secret .t {{ background:{RED}; color:{CREAM}; padding:2px 10px; }}
 """
 
