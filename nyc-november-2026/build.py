@@ -23,6 +23,7 @@ BUDDHA = ("THE BUDDHA ROOM", "410 8th Ave, 2nd Fl")
 
 # (day, date, seating, venue, address, note)
 SHOWS = [
+    ("TUE", "NOV 3", "10:30 PM", "THE LMAO SHOW", "Otto's Shrunken Head · 538 E 14th St", ""),
     ("THU", "NOV 5", "7:30 PM", "LBC FALL FEST FINAL", "The Buddha Room · 410 8th Ave, 2nd Fl", "final"),
     ("SAT", "NOV 7", "4:30 PM", *STAND, ""),
     ("SAT", "NOV 7", "6:30 PM", "THE LMAO SHOW", "The Local Hostel · 1302 44th Ave, LIC", ""),
@@ -103,7 +104,7 @@ def compact_rows(shows):
     out = []
     for dow, dt, seat, name, addr, note in shows:
         out.append(f"""
-<div class="row {note}" style="padding:9px 0">
+<div class="row {note}" style="padding:6px 0">
   <div class="d" style="width:138px;display:flex;align-items:baseline;gap:10px">
     <span class="dow" style="font-size:16px">{dow}</span><span class="dt" style="font-size:30px">{dt}</span>
   </div>
@@ -158,7 +159,7 @@ def story():
   <div class="anton" style="font-size:140px;line-height:.92;margin-top:14px">ARTEM<br>MASHKOV</div>
 </div>
 <div style="position:absolute;left:64px;right:64px;top:520px">
-  {rows(SHOWS, 44, 38, 24, 25, 14)}
+  {rows(SHOWS, 42, 36, 23, 24, 10)}
 </div>
 <div class="mono" style="position:absolute;left:64px;right:64px;top:1700px;font-size:22px;color:#8d877b">Times are seating. Final tickets ↓</div>
 <div class="handle" style="right:64px;top:1700px;font-size:22px"><b>@</b>ARTEMISFUNNY</div>
@@ -188,10 +189,10 @@ def render(name, html, w, h):
 
 if __name__ == "__main__":
     W = [
-        ("NOV 2 – 8", SHOWS[0:4], "", "WEEK 1"),
-        ("NOV 9 – 15", SHOWS[4:5], PHOTO_BAND, "WEEK 2"),
-        ("NOV 16 – 22", SHOWS[5:9], "", "WEEK 3"),
-        ("NOV 23 – 29", SHOWS[9:11], OUTRO, "WEEK 4"),
+        ("NOV 2 – 8", SHOWS[0:5], "", "WEEK 1"),
+        ("NOV 9 – 15", SHOWS[5:6], PHOTO_BAND, "WEEK 2"),
+        ("NOV 16 – 22", SHOWS[6:10], "", "WEEK 3"),
+        ("NOV 23 – 29", SHOWS[10:12], OUTRO, "WEEK 4"),
     ]
     for f in OUT.glob("nov_carousel_*.png"):
         f.unlink()

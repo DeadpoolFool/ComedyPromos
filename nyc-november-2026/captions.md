@@ -7,7 +7,7 @@ Photo on the cover: LBC prelim 10/17, The Buddha Room (`photos/lbc-prelim-2026-1
 ## Caption options (pick one)
 
 1.
-Eleven shows before Switzerland takes me back. Two of them I'm not allowed to talk about.
+Twelve shows before Switzerland takes me back. Two of them I'm not allowed to talk about.
 
 Final tickets: link in bio. Times on the slides are seating.
 @LaughingBuddhaComedy #LBC #LBCFF
@@ -32,6 +32,7 @@ LBC Fall Fest final, Thu Nov 5: https://www.tickettailor.com/events/laughingbudd
 
 | Date | Show (Workbook) | Showtime | Seating | Workbook status |
 |---|---|---|---|---|
+| Tue Nov 3 | The LMAO Show, Otto's Shrunken Head | 11:00 PM | 10:30 PM | confirmed (calendar + Workbook) |
 | Thu Nov 5 | LBC Fall Fest Finals, The Buddha Room | 8:00 PM | 7:30 PM | confirmed |
 | Sat Nov 7 | LBC No Pressure Saturday, The Stand | 5:00 PM | 4:30 PM | self-booked, approval not verified |
 | Sat Nov 7 | The LMAO Show, The Local Hostel LIC | 7:00 PM | 6:30 PM | guest spot confirmed |
@@ -44,4 +45,4 @@ LBC Fall Fest final, Thu Nov 5: https://www.tickettailor.com/events/laughingbudd
 | Sat Nov 28 | LBC No Pressure Saturday, The Stand | 5:00 PM | 4:30 PM | planned, no request sent |
 | Sun Nov 29 | LBC Get Passed, NYCC UWS | 4:00 PM | 3:30 PM | planned, no request sent |
 
-Left off: The LMAO Show at Otto's, Tue Nov 3 11 PM (tonight, before the post goes up). Nothing booked Dec 1-4.
+Nothing booked Dec 1-4.
