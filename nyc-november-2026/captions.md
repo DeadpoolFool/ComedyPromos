@@ -46,3 +46,26 @@ LBC Fall Fest final, Thu Nov 5: https://www.tickettailor.com/events/laughingbudd
 | Sun Nov 29 | LBC Get Passed, NYCC UWS | 4:00 PM | 3:30 PM | planned, no request sent |
 
 Nothing booked Dec 1-4.
+
+## Final caption (sent to Artem 2026-11-03, plain text)
+
+Twelve shows before Switzerland takes me back. Two of them are secret.
+
+Tue Nov 3 · Otto's Shrunken Head (LMAO Show) · 10:30 PM
+Thu Nov 5 · LBC Fall Fest Final · The Buddha Room · 7:30 PM
+Sat Nov 7 · The Stand · 4:30 PM
+Sat Nov 7 · The Local Hostel, LIC (LMAO Show) · 6:30 PM
+Sun Nov 8 · The Buddha Room · 7:30 PM
+Sat Nov 14 · The Stand · 4:30 PM
+Mon Nov 16 · SECRET SHOW · DM me
+Sat Nov 21 · The Stand · 4:30 PM
+Sun Nov 22 · New York Comedy Club UWS · 3:30 PM
+Sun Nov 22 · SECRET SHOW · DM me
+Sat Nov 28 · The Stand · 4:30 PM
+Sun Nov 29 · New York Comedy Club UWS · 3:30 PM
+
+The secret shows are top-tier pro comics, names you'd recognize. No tickets, no public listing. DM me if you want in.
+
+Times are seating. Fall Fest Final tickets: link in bio.
+
+@LaughingBuddhaComedy #LBC #LBCFF #nycstandup #standupcomedy
