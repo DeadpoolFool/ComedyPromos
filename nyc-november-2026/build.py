@@ -23,10 +23,10 @@ BUDDHA = ("THE BUDDHA ROOM", "410 8th Ave, 2nd Fl")
 
 # (day, date, seating, venue, address, note)
 SHOWS = [
-    ("TUE", "NOV 3", "10:30 PM", "THE LMAO SHOW", "Otto's Shrunken Head · 538 E 14th St", ""),
+    ("TUE", "NOV 3", "10:30 PM", "OTTO'S SHRUNKEN HEAD", "The LMAO Show · 538 E 14th St", "", "LMAO SHOW · OTTO'S"),
     ("THU", "NOV 5", "7:30 PM", "LBC FALL FEST FINAL", "The Buddha Room · 410 8th Ave, 2nd Fl", "final"),
     ("SAT", "NOV 7", "4:30 PM", *STAND, ""),
-    ("SAT", "NOV 7", "6:30 PM", "THE LMAO SHOW", "The Local Hostel · 1302 44th Ave, LIC", ""),
+    ("SAT", "NOV 7", "6:30 PM", "THE LOCAL HOSTEL", "The LMAO Show · 1302 44th Ave, LIC", "", "LMAO SHOW · LOCAL HOSTEL"),
     ("SUN", "NOV 8", "7:30 PM", *BUDDHA, ""),
     ("SAT", "NOV 14", "4:30 PM", *STAND, ""),
     ("MON", "NOV 16", "DM ME", "SECRET SHOW", "Pro comics · Location: ask me", "secret"),
@@ -75,7 +75,7 @@ def logo(w, h, img_w, img_x, img_y):
 
 def rows(shows, dt_px, name_px, addr_px, t_px, pad):
     out = []
-    for dow, dt, seat, name, addr, note in shows:
+    for dow, dt, seat, name, addr, note, *_ in shows:
         lbl = "SEATING" if seat[0].isdigit() else "&nbsp;"
         out.append(f"""
 <div class="row {note}" style="padding:{pad}px 0">
@@ -102,7 +102,8 @@ def page(w, h, body):
 
 def compact_rows(shows):
     out = []
-    for dow, dt, seat, name, addr, note in shows:
+    for dow, dt, seat, name, addr, note, *short in shows:
+        name = short[0] if short else name
         out.append(f"""
 <div class="row {note}" style="padding:6px 0">
   <div class="d" style="width:138px;display:flex;align-items:baseline;gap:10px">
