@@ -28,10 +28,10 @@ SHOWS = [
     ("SAT", "NOV 7", "6:30 PM", "THE LMAO SHOW", "The Local Hostel · 1302 44th Ave, LIC", ""),
     ("SUN", "NOV 8", "7:30 PM", *BUDDHA, ""),
     ("SAT", "NOV 14", "4:30 PM", *STAND, ""),
-    ("MON", "NOV 16", "TBA", "POP-UP SHOW", "Pro comics · Place TBA · Maybe", "tba"),
+    ("MON", "NOV 16", "DM ME", "SECRET SHOW", "Pro comics · Location: ask me", "secret"),
     ("SAT", "NOV 21", "4:30 PM", *STAND, ""),
     ("SUN", "NOV 22", "3:30 PM", *NYCC, ""),
-    ("SUN", "NOV 22", "EVENING", "POP-UP SHOW", "Pro comics · Time & place TBA", "tba"),
+    ("SUN", "NOV 22", "DM ME", "SECRET SHOW", "Pro comics · Location: ask me", "secret"),
     ("SAT", "NOV 28", "4:30 PM", *STAND, ""),
     ("SUN", "NOV 29", "3:30 PM", *NYCC, ""),
 ]
@@ -61,7 +61,9 @@ html, body {{ background:#0b0b0b; color:{CREAM}; overflow:hidden; }}
 .s .lbl {{ color:#8d877b; letter-spacing:3px; }}
 .s .t {{ font-weight:700; color:{CREAM}; }}
 .final .name {{ color:{RED}; }}
-.tba .name, .tba .t {{ color:#8d877b; }}
+.secret .name {{ color:{RED}; letter-spacing:1px; }}
+.secret .name::after {{ content:"?"; color:{CREAM}; }}
+.secret .t {{ background:{RED}; color:{CREAM}; padding:2px 10px; }}
 """
 
 
