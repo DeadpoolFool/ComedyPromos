@@ -124,6 +124,10 @@ def cover():
 <div style="position:absolute;left:56px;width:515px;top:282px">
   {compact_rows(SHOWS)}
 </div>
+<div style="position:absolute;left:56px;top:880px">
+  <span class="mono" style="font-size:18px;font-weight:700;color:{RED};letter-spacing:4px">DEC 4</span>
+  <span class="anton" style="font-size:38px;margin-left:12px">DEPORTED TO SWITZERLAND</span>
+</div>
 <div class="mono" style="position:absolute;left:56px;top:968px;font-size:17px;color:#8d877b">Times are seating. Final tickets: link in bio.</div>
 <div class="handle" style="left:56px;bottom:30px;font-size:22px"><b>@</b>ARTEMISFUNNY</div>
 <div class="mono" style="position:absolute;right:24px;bottom:28px;font-size:18px;font-weight:700;background:#0b0b0bcc;padding:4px 10px">BY WEEK →</div>
@@ -162,7 +166,8 @@ def story():
 
 
 STAND_PHOTO = Path("/mnt/project-files/photos/stills-bank/thestand-2026-03-21/smile/stand_24_0.jpg").as_uri()
-PHOTO_BAND = f"""<img src="{STAND_PHOTO}" style="position:absolute;left:64px;top:370px;width:952px">"""
+PHOTO_BAND = f"""<div class="mono" style="position:absolute;left:64px;top:362px;font-size:24px;font-weight:700;letter-spacing:3px;color:{RED}">+ ADDITIONAL SHOWS PENDING</div>
+<img src="{STAND_PHOTO}" style="position:absolute;left:50%;transform:translateX(-50%);top:412px;height:552px">"""
 
 OUTRO = f"""<div style="position:absolute;left:64px;top:760px">
   <div class="mono" style="font-size:22px;font-weight:700;color:{RED};letter-spacing:4px">DEC 4</div>
