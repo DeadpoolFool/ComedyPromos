@@ -1,8 +1,8 @@
 # NYC November 2026 run: captions (draft, not posted)
 
-Carousel: `out/nov_carousel_1..3_1080x1080.png`. Story: `out/nov_story_1080x1920.png` (put the LBC final ticket link sticker in the empty band under the list).
+Carousel: `out/nov_carousel_1..5_1080x1080.png` (slide 1 = all shows + photo, slides 2-5 = week by week). Story: `out/nov_story_1080x1920.png` (put the LBC final ticket link sticker in the empty band under the list).
 
-Photo on the cover: LBC prelim 10/17, The Buddha Room (`photos/lbc-prelim-2026-10-17/picks/95.jpg`), same room as the final.
+Photo on the cover: LBC prelim 10/17, The Buddha Room (`photos/lbc-prelim-2026-10-17/picks/95.jpg`), same room as the final. Week 2 slide: The Stand 3/21 still `stills-bank/thestand-2026-03-21/smile/stand_24_0.jpg`.
 
 ## Caption options (pick one)
 

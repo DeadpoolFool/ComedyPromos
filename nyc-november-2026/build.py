@@ -99,36 +99,46 @@ def page(w, h, body):
             f"<body><div class='page' style='width:{w}px;height:{h}px'>{body}</div></body></html>")
 
 
+def compact_rows(shows):
+    out = []
+    for dow, dt, seat, name, addr, note in shows:
+        out.append(f"""
+<div class="row {note}" style="padding:9px 0">
+  <div class="d" style="width:138px;display:flex;align-items:baseline;gap:10px">
+    <span class="dow" style="font-size:16px">{dow}</span><span class="dt" style="font-size:30px">{dt}</span>
+  </div>
+  <div class="v"><div class="name" style="font-size:26px">{name}</div></div>
+  <div class="s"><div class="t" style="font-size:20px">{seat}</div></div>
+</div>""")
+    return "".join(out)
+
+
 def cover():
     return page(1080, 1080, f"""
-{logo(330, 250, 210, 95, 22)}
-<div style="position:absolute;left:64px;top:64px">
-  <div class="kicker" style="font-size:24px">NYC · NOV 5 – 29</div>
-  <div class="anton" style="font-size:148px;line-height:.92;margin-top:18px">ARTEM<br>MASHKOV</div>
-  <div class="mono" style="font-size:26px;margin-top:30px;color:#bdb5a3;width:600px;line-height:1.45">
-    11 shows in 25 days.<br><span style="color:{CREAM};font-weight:700">Then Switzerland takes me back.</span></div>
+<img src="{PHOTO}" style="position:absolute;right:0;bottom:0;height:880px">
+{logo(250, 190, 160, 72, 16)}
+<div style="position:absolute;left:56px;top:52px">
+  <div class="kicker" style="font-size:22px">NYC · NOVEMBER</div>
+  <div class="anton" style="font-size:96px;line-height:.92;margin-top:10px">ARTEM<br>MASHKOV</div>
 </div>
-<div style="position:absolute;left:64px;top:620px;width:566px;border:3px solid {CREAM};padding:28px 30px">
-  <div class="mono" style="display:inline-block;background:{RED};color:{CREAM};font-weight:700;font-size:20px;letter-spacing:2px;padding:8px 12px;white-space:nowrap">THU · NOV 5 · SEATING 7:30 PM</div>
-  <div class="anton" style="font-size:58px;line-height:1;margin-top:18px">LBC FALL FEST FINAL</div>
-  <div class="barlow" style="font-size:30px;font-weight:500;color:#bdb5a3;margin-top:8px">The Buddha Room · 410 8th Ave, 2nd Fl</div>
-  <div class="mono" style="font-size:22px;font-weight:700;margin-top:10px">Tickets: link in bio</div>
+<div style="position:absolute;left:56px;width:515px;top:282px">
+  {compact_rows(SHOWS)}
 </div>
-<img src="{PHOTO}" style="position:absolute;right:0;bottom:0;height:770px">
-<div class="handle" style="left:64px;bottom:34px;font-size:26px"><b>@</b>ARTEMISFUNNY</div>
-<div class="mono" style="position:absolute;right:28px;bottom:34px;font-size:20px;font-weight:700;background:#0b0b0bcc;padding:4px 10px">ALL DATES →</div>
+<div class="mono" style="position:absolute;left:56px;top:968px;font-size:17px;color:#8d877b">Times are seating. Final tickets: link in bio.</div>
+<div class="handle" style="left:56px;bottom:30px;font-size:22px"><b>@</b>ARTEMISFUNNY</div>
+<div class="mono" style="position:absolute;right:24px;bottom:28px;font-size:18px;font-weight:700;background:#0b0b0bcc;padding:4px 10px">BY WEEK →</div>
 """)
 
 
-def list_slide(shows, title, outro=""):
+def list_slide(shows, title, outro="", kicker="ARTEM MASHKOV · NYC"):
     return page(1080, 1080, f"""
 {logo(250, 190, 160, 72, 16)}
 <div style="position:absolute;left:64px;top:60px">
-  <div class="kicker" style="font-size:22px">ARTEM MASHKOV · NYC</div>
+  <div class="kicker" style="font-size:22px">{kicker}</div>
   <div class="anton" style="font-size:92px;line-height:1;margin-top:10px">{title}</div>
 </div>
 <div style="position:absolute;left:64px;right:64px;top:225px">
-  {rows(shows, 48, 42, 26, 27, 15)}
+  {rows(shows, 54, 48, 28, 29, 22)}
 </div>
 <div class="handle" style="left:64px;bottom:40px;font-size:24px"><b>@</b>ARTEMISFUNNY</div>
 <div class="mono" style="position:absolute;right:64px;bottom:40px;font-size:20px;color:#8d877b">Times are seating.</div>
@@ -151,7 +161,10 @@ def story():
 """)
 
 
-OUTRO = f"""<div style="position:absolute;left:64px;top:850px">
+STAND_PHOTO = Path("/mnt/project-files/photos/stills-bank/thestand-2026-03-21/smile/stand_24_0.jpg").as_uri()
+PHOTO_BAND = f"""<img src="{STAND_PHOTO}" style="position:absolute;left:64px;top:370px;width:952px">"""
+
+OUTRO = f"""<div style="position:absolute;left:64px;top:760px">
   <div class="mono" style="font-size:22px;font-weight:700;color:{RED};letter-spacing:4px">DEC 4</div>
   <div class="anton" style="font-size:54px;margin-top:4px">DEPORTED TO SWITZERLAND</div>
 </div>"""
@@ -169,7 +182,15 @@ def render(name, html, w, h):
 
 
 if __name__ == "__main__":
+    W = [
+        ("NOV 2 – 8", SHOWS[0:4], "", "WEEK 1"),
+        ("NOV 9 – 15", SHOWS[4:5], PHOTO_BAND, "WEEK 2"),
+        ("NOV 16 – 22", SHOWS[5:9], "", "WEEK 3"),
+        ("NOV 23 – 29", SHOWS[9:11], OUTRO, "WEEK 4"),
+    ]
+    for f in OUT.glob("nov_carousel_*.png"):
+        f.unlink()
     render("nov_carousel_1_1080x1080", cover(), 1080, 1080)
-    render("nov_carousel_2_1080x1080", list_slide(SHOWS[:6], "NOV 5 – 16"), 1080, 1080)
-    render("nov_carousel_3_1080x1080", list_slide(SHOWS[6:], "NOV 21 – 29", OUTRO), 1080, 1080)
+    for i, (title, shows, extra, k) in enumerate(W, start=2):
+        render(f"nov_carousel_{i}_1080x1080", list_slide(shows, title, extra, f"{k} · ARTEM MASHKOV · NYC"), 1080, 1080)
     render("nov_story_1080x1920", story(), 1080, 1920)
