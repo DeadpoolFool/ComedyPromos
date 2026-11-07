@@ -33,9 +33,9 @@ html, body {{ background:{BG}; color:{CREAM}; overflow:hidden; }}
         clip-path:polygon(22% 0, 100% 0, 100% 100%, 0 100%); z-index:3; }}
 .logo img {{ position:absolute; width:195px; left:88px; top:20px; filter:brightness(0); }}
 .kicker {{ font-family:'Space Mono'; font-weight:700; color:{RED}; letter-spacing:8px; font-size:26px; }}
-.head {{ font-family:'Anton'; font-size:124px; line-height:.95; }}
-.photo {{ position:absolute; left:140px; top:250px; width:800px; height:1000px; }}
-.photo img {{ width:800px; height:1000px; display:block; }}
+.head {{ font-family:'Anton'; font-size:104px; line-height:.95; }}
+.photo {{ position:absolute; left:160px; top:330px; width:760px; height:950px; }}
+.photo img {{ width:760px; height:950px; display:block; }}
 .fade-b {{ position:absolute; left:0; right:0; bottom:0; height:260px;
           background:linear-gradient(to bottom, rgba(11,11,11,0), {BG}); }}
 .fade-t {{ position:absolute; left:0; right:0; top:0; height:70px;
@@ -43,7 +43,7 @@ html, body {{ background:{BG}; color:{CREAM}; overflow:hidden; }}
 .fade-l, .fade-r {{ position:absolute; top:0; bottom:0; width:90px; }}
 .fade-l {{ left:0; background:linear-gradient(to right, {BG}, rgba(11,11,11,0)); }}
 .fade-r {{ right:0; background:linear-gradient(to left, {BG}, rgba(11,11,11,0)); }}
-.rows {{ position:absolute; left:64px; right:64px; top:1210px; }}
+.rows {{ position:absolute; left:64px; right:64px; top:1225px; }}
 .row {{ display:flex; align-items:center; border-top:2px solid #2a2a2a; padding:22px 0; }}
 .row:last-child {{ border-bottom:2px solid #2a2a2a; }}
 .t {{ flex:0 0 300px; }}
@@ -77,8 +77,8 @@ def story():
 <div class="page">
   <div class="logo"><img src="{LOGO}"></div>
   <div style="position:absolute;left:64px;top:70px">
-    <div class="kicker">TODAY · SAT NOV 7</div>
-    <div class="head" style="margin-top:12px">TWO SHOWS</div>
+    <div class="kicker">TODAY · NOV 7</div>
+    <div class="head" style="margin-top:12px">BACK TO BACK<br>ON A SAT</div>
   </div>
   <div class="photo"><img src="{PHOTO}"><div class="fade-t"></div><div class="fade-l"></div><div class="fade-r"></div><div class="fade-b"></div></div>
   <div class="rows">{rows()}</div>
