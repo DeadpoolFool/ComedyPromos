@@ -13,6 +13,7 @@ Show and tour promo for @ARTEMISFUNNY: flyers, stories, reels, captions. One fol
 - Fonts: Anton (headlines), Space Mono (dates, handles, CTAs), Barlow Condensed (body).
 - Logo: the pointing silhouette in `brand/logo_silhouette.png`, always top right, pointing at the show info.
 - Handle `@ARTEMISFUNNY` bottom right. No footer bar needed.
+- Bio, credits and one-liner: `brand/bio.md`. Use the credit line from there, don't retype it.
 
 ## Rules for every flyer
 
