@@ -15,7 +15,7 @@ OUT.mkdir(exist_ok=True)
 CHROME = (glob.glob("/opt/pw-browsers/chromium_headless_shell-*/chrome-*/headless_shell")
           + glob.glob("/opt/pw-browsers/chromium-*/chrome-linux*/chrome"))[0]
 LOGO = (HERE.parent / "brand" / "logo_silhouette.png").as_uri()
-PHOTO = (HERE / "stage_stand.jpg").as_uri()  # The Stand 3/21/26, neon STAND sign, full body, mic up
+PHOTO = (HERE / "stage_stand.jpg").as_uri()  # The Stand 7/18/26 enhanced tape, 209.6s, 864x1080 crop: smiling, mic up, full sign
 
 RED, CREAM, BG = "#df2731", "#efe6d2", "#0b0b0b"
 
@@ -40,7 +40,7 @@ html, body {{ background:{BG}; color:{CREAM}; overflow:hidden; }}
           background:linear-gradient(to bottom, rgba(11,11,11,0), {BG}); }}
 .fade-t {{ position:absolute; left:0; right:0; top:0; height:70px;
           background:linear-gradient(to top, rgba(11,11,11,0), {BG}); }}
-.fade-l, .fade-r {{ position:absolute; top:0; bottom:0; width:90px; }}
+.fade-l, .fade-r {{ position:absolute; top:0; bottom:0; width:36px; }}
 .fade-l {{ left:0; background:linear-gradient(to right, {BG}, rgba(11,11,11,0)); }}
 .fade-r {{ right:0; background:linear-gradient(to left, {BG}, rgba(11,11,11,0)); }}
 .rows {{ position:absolute; left:64px; right:64px; top:1225px; }}

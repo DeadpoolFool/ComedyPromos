@@ -7,7 +7,7 @@ https://thestandnyc.com//shows/show/14182/2026-11-07-170000-laughing-buddha-come
 
 The LMAO Show at The Local Hostel has no audience ticket link in the Workbook (flyer had none), so no CTA on that row.
 
-Photo: The Stand 3/21/26 portrait still, `stills-bank/thestand-2026-03-21/portrait/stand_36_5_portrait.jpg` (upscaled tape frame; no photographer shots from The Stand yet).
+Photo: The Stand 7/18/26 enhanced tape (`Enhanced/TheStand 07_18_26_ArtemMashkov.mp4`), frame at 209.6s, 864x1080 crop from x=690. Artem asked for a better Stand photo than the 3/21 still.
 
 ## Sources (Comedy Workbook Shows tab + calendar, checked 2026-11-07)
 
