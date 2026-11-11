@@ -41,6 +41,8 @@ html, body {{ background:{BG}; color:{CREAM}; overflow:hidden; }}
            color:{CREAM}; padding:4px 12px; margin-right:16px; vertical-align:middle; text-shadow:none; }}
 .sub {{ font-family:'Barlow Condensed'; font-weight:600; font-size:38px; color:{CREAM}; margin-top:8px;
        text-shadow:0 2px 12px rgba(0,0,0,.8); }}
+.me {{ position:absolute; left:640px; top:392px; font-family:'Space Mono'; font-weight:700; font-size:26px;
+       letter-spacing:3px; background:{RED}; color:{CREAM}; padding:6px 14px; box-shadow:0 4px 16px rgba(0,0,0,.5); }}
 .info {{ position:absolute; left:64px; right:64px; top:1430px; }}
 .row {{ display:flex; align-items:center; border-top:2px solid #2a2a2a; border-bottom:2px solid #2a2a2a; padding:24px 0; }}
 .t {{ flex:0 0 300px; }}
@@ -62,6 +64,7 @@ def story():
 <div class="page">
   <img class="bg" src="{PHOTO}">
   <div class="shade-t"></div><div class="shade-b"></div>
+  <div class="me">ARTEM MASHKOV ↓</div>
   <div class="logo"><img src="{LOGO}"></div>
   <div class="top">
     <div class="kicker">FRI · NOV 13</div>
