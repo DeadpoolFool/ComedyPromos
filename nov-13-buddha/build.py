@@ -64,13 +64,12 @@ def story():
 <div class="page">
   <img class="bg" src="{PHOTO}">
   <div class="shade-t"></div><div class="shade-b"></div>
-  <div class="me">ARTEM MASHKOV ↓</div>
   <div class="logo"><img src="{LOGO}"></div>
   <div class="top">
     <div class="kicker">FRI · NOV 13</div>
     <div class="head">BONUS SHOW</div>
     <div class="hl"><span>HEADLINER</span>MC JIN</div>
-    <div class="sub">I'm the one pointing at me.</div>
+    <div class="sub">I'm the one on the right (don't get confused)</div>
   </div>
   <div class="info">
     <div class="row">
