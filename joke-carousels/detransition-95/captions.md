@@ -6,7 +6,7 @@ Misdirect: "detransitioning" plants that he's trans, then Turkey and the 9.5 rat
 ## Version C (2026-11-16, punch-up, the one to post)
 Slides: split_detransition_95_C_1.jpg, split_detransition_95_C_2.jpg
 1. "I'm thinking of detransitioning." / "Going to Turkey."
-2. "I'm going from a 9.5 Baldy / to an 8.5 Hairy." / "I lose a point in dignity, but gain points with my wife. Worth it."
+2. "I would be going from a 9.5 Baldy / to an 8.5 Hairy." / "I lose a point in dignity, but gain points with my wife. Worth it."
 Stills: neutral/bb_206, neutral/bb_275, smile/bb_182, smile/bb_212. Caption: Personal news.
 A and B below use the older 9.5-from-8.5 wording.
 
