@@ -1,0 +1,35 @@
+{
+ "photos": "/mnt/project-files/photos/stills-bank/broadway-blue-2025-10-11",
+ "out": "out",
+ "handle": "@artemisfunny",
+ "carousels": {
+  "detransition_95_A": [
+   [
+    "neutral/bb_206.jpg",
+    "I'm thinking of detransitioning.",
+    "neutral/bb_275.jpg",
+    "Going to Turkey."
+   ],
+   [
+    "smile/bb_212.jpg",
+    "Getting back to a 9.5\nfrom the 8.5 I am now.",
+    "smile/bb_182.jpg",
+    "This joke is a 5.5. Might have to detransition it too."
+   ]
+  ],
+  "detransition_95_B": [
+   [
+    "neutral/bb_206.jpg",
+    "I'm thinking of detransitioning.",
+    "neutral/bb_275.jpg",
+    "Going to Turkey."
+   ],
+   [
+    "neutral/bb_340.jpg",
+    "Getting back to a 9.5",
+    "smile/bb_212.jpg",
+    "from the 8.5 I am now."
+   ]
+  ]
+ }
+}
