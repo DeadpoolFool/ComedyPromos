@@ -14,8 +14,12 @@ def panel(path):
     """Photo scaled to the panel height, trimmed evenly at the sides only."""
     im = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
     im = im.resize((round(im.width * PANEL_H / im.height), PANEL_H), Image.LANCZOS)
-    if im.width < W:
-        raise SystemExit(f"{path} is too narrow for a full-width panel; use a horizontal shot")
+    if im.width < W:  # a pixel or two short from rounding: scale to width, trim the bottom
+        im = ImageOps.exif_transpose(Image.open(path)).convert("RGB")
+        im = im.resize((W, round(im.height * W / im.width)), Image.LANCZOS)
+        if im.height < PANEL_H:
+            raise SystemExit(f"{path} is too narrow for a full-width panel; use a horizontal shot")
+        return im.crop((0, 0, W, PANEL_H))
     left = (im.width - W) // 2
     return im.crop((left, 0, left + W, PANEL_H))
 

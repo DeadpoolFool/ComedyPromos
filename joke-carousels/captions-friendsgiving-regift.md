@@ -16,7 +16,7 @@ Format: one 1080x1350 frame, no swipe. Public is fine (no dating/poly material).
 5. Asking for a friend.
 
 ## Stills used
-Comedy 13 09/29/26: neutral/c13_174 (top), smile/c13_140 (bottom), ungraded, from `photos/stills-bank/comedy13-2026-09-29/`.
+Broadway Comedy Club 01/15/26 (Guyznite, true 4K, ungraded): neutral/gz_431_0 (top), smile/gz_432_5 (bottom), from `photos/stills-bank/guyznite-2026-01-15/`. Comedy 13 version was too soft for Artem ("better pics").
 
 EastVille 10/18/26 was tried first and dropped (2026-11-27): the stage light that night washes the green mosaic sign pink straight out of the camera (raw frame at 332s checked), and Artem said "use normal colors". No color grading or recoloring of his photos, ever.
 
