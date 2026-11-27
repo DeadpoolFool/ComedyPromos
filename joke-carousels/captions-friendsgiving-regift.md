@@ -16,6 +16,6 @@ Format: one 1080x1350 frame, no swipe. Public is fine (no dating/poly material).
 5. Asking for a friend.
 
 ## Stills used
-EastVille 10/18/26 (first post on this venue): neutral/ev_332 (top), smile/ev_360 (bottom), from `photos/stills-bank/eastville-2026-10-18/`.
+EastVille 10/18/26 (first post on this venue): neutral/ev_332 (top), smile/ev_360 (bottom). Pink stage light removed (Artem, 2026-11-27: "use normal colors"): white-balanced against the white tiles, copies in `joke-carousels/stills/eastville-2026-10-18-wb/`.
 
 Build: `python3 joke-carousels/split_posts.py joke-carousels/friendsgiving_regift.json` (Poppins SemiBold in ~/.fonts; "Jesus Christ" uses a no-break space so the name stays on one line).
