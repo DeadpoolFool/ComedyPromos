@@ -1,0 +1,27 @@
+{
+ "photos": "/mnt/project-files/photos/lbc-prelim-2026-10-17/all",
+ "out": "joke-carousels/out",
+ "handle": "@artemisfunny",
+ "carousels": {
+  "uncircumsized": [
+   [
+    "92.jpg",
+    "Everyone always asks me, why did you leave Russia? Was it the war crimes?",
+    "93.jpg",
+    "No... totally cool with those."
+   ],
+   [
+    "97.jpg",
+    "It was the weather. It's so fucking cold in Russia...",
+    "96.jpg",
+    "...that no one is circumcised."
+   ],
+   [
+    "91.jpg",
+    "That's right. We all have dick hoodies.",
+    "93.jpg",
+    "In Russia, keeping it wrapped means something else."
+   ]
+  ]
+ }
+}
