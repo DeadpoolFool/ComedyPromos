@@ -1,7 +1,7 @@
 # Friendsgiving Regift (single-frame post)
 
 Joke (Artem, 2026-11-27, v3, Artem 2026-11-27: "another one right after"):
-- Top: I'm going to a Friendsgiving potluck empty-handed, and taking something from it to bring to another one right after.
+- Top: I'm hitting a Friendsgiving potluck empty-handed and bringing their food to another one right after.
 - Bottom: On a scale of Kanye West to Jesus Christ, rate how Jewish this is.
 
 Untested on stage. This post is the test: comments decide whether it becomes a stage bit (seasonal window ~Nov 15-30).
