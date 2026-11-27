@@ -16,6 +16,8 @@ Format: one 1080x1350 frame, no swipe. Public is fine (no dating/poly material).
 5. Asking for a friend.
 
 ## Stills used
-EastVille 10/18/26 (first post on this venue): neutral/ev_332 (top), smile/ev_360 (bottom). Pink stage light removed (Artem, 2026-11-27: "use normal colors"): white-balanced against the white tiles, copies in `joke-carousels/stills/eastville-2026-10-18-wb/`.
+Comedy 13 09/29/26: neutral/c13_174 (top), smile/c13_140 (bottom), ungraded, from `photos/stills-bank/comedy13-2026-09-29/`.
+
+EastVille 10/18/26 was tried first and dropped (2026-11-27): the stage light that night washes the green mosaic sign pink straight out of the camera (raw frame at 332s checked), and Artem said "use normal colors". No color grading or recoloring of his photos, ever.
 
 Build: `python3 joke-carousels/split_posts.py joke-carousels/friendsgiving_regift.json` (Poppins SemiBold in ~/.fonts; "Jesus Christ" uses a no-break space so the name stays on one line).
